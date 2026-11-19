@@ -65,14 +65,56 @@ a {
   background: var(--accent-color);
 }
 
-/* Keep the language/theme buttons clear of the "more" (hamburger) button on small screens */
+/* Small screens: the site name never wraps; when the language/theme buttons no longer
+   fit next to it, the greedy-nav script moves them into the dropdown menu (.in-menu) */
 @media (max-width: $medium) {
-  .greedy-nav .visible-links {
-    max-width: calc(100% - 3rem);
-  }
-
-  .masthead__menu-item--lg {
+  .greedy-nav .visible-links li.masthead__menu-item--lg {
+    white-space: nowrap;
+    text-wrap: nowrap;
     padding-right: 1em;
+  }
+}
+
+.greedy-nav .hidden-links .masthead__toggles {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+
+  > button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35em;
+    min-width: 2.75rem;
+    min-height: 2.5rem;
+    padding: 0 0.75rem;
+    border: 1px solid var(--global-border-color);
+    border-radius: $border-radius;
+    background: transparent;
+    color: var(--global-masthead-link-color);
+    font: inherit;
+    font-size: $type-size-5;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--global-masthead-link-color-hover);
+      background: var(--global-border-color);
+    }
+
+    &:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+    }
+  }
+}
+
+/* Mobile: the sidebar is a stacking context (transform), so lift it above the page
+   content to keep the "Follow" dropdown on top of headings */
+@media (max-width: #{$sidebar-screen-min-width - 1px}) {
+  .sidebar {
+    position: relative;
+    z-index: 15;
   }
 }
 
@@ -418,21 +460,11 @@ a {
   }
 }
 
-/* Narrow phones: keep the site name on a single line, scaling it with the viewport */
-@media (max-width: 420px) {
-  .greedy-nav .visible-links li.masthead__menu-item--lg {
-    white-space: nowrap;
-    text-wrap: nowrap;
-    padding-right: 0.5em;
-  }
-
+/* Very narrow phones: scale the site name down so it still fits on one line */
+@media (max-width: 360px) {
   .masthead__menu-item--lg a {
-    font-size: clamp(0.75rem, calc(4.6vw - 2px), 1.15rem);
+    font-size: clamp(0.85rem, calc(5.4vw - 2px), 1.15rem);
     letter-spacing: 0;
-  }
-
-  .greedy-nav .visible-links .masthead__toggles > button {
-    margin-left: 0.4rem;
   }
 }
 

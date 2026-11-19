@@ -13,6 +13,15 @@ var $hlinks = $('#site-nav .hidden-links');
 
 var breaks = [];
 
+// When even the persistent items (site name + language/theme toggles) do not fit,
+// the toggles move to the end of the dropdown menu and come back once there is room.
+var tailInMenu = false;
+var tailWidth = 0;
+
+function spaceLeft() {
+  return $btn.hasClass('hidden') ? $nav.width() : $nav.width() - $btn.width() - 30;
+}
+
 function updateNav() {
 
   var availableSpace = $btn.hasClass('hidden') ? $nav.width() : $nav.width() - $btn.width() - 30;
@@ -33,11 +42,25 @@ function updateNav() {
       $btn.removeClass("hidden");
     }
 
+    // Only persistent items are left and they still overflow: move the toggles to the menu
+    if (!tailInMenu && $vlinks_persist_tail.length > 0 && $vlinks.width() > spaceLeft()) {
+      tailWidth = $vlinks_persist_tail.outerWidth(true);
+      $vlinks_persist_tail.addClass('in-menu').appendTo($hlinks);
+      tailInMenu = true;
+      $btn.removeClass("hidden");
+    }
+
     // The visible list is not overflowing
   } else {
 
+    // The toggles come back first, once they fit next to the site name
+    if (tailInMenu && $vlinks.width() + tailWidth <= availableSpace) {
+      $vlinks_persist_tail.removeClass('in-menu').appendTo($vlinks);
+      tailInMenu = false;
+    }
+
     // There is space for another item in the nav
-    while (breaks.length > 0 && availableSpace > breaks[breaks.length - 1]) {
+    while (!tailInMenu && breaks.length > 0 && availableSpace > breaks[breaks.length - 1]) {
       // Move the item to the visible list
       if ($vlinks_persist_tail.children().length > 0) {
         $hlinks.children().first().insertBefore($vlinks_persist_tail);
@@ -48,7 +71,7 @@ function updateNav() {
     }
 
     // Hide the dropdown btn if hidden list is empty
-    if (breaks.length < 1) {
+    if (breaks.length < 1 && !tailInMenu) {
       $btn.addClass('hidden');
       $btn.removeClass('close');
       $hlinks.addClass('hidden');
