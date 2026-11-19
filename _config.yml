@@ -147,7 +147,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : og-image.png   # Social media default site image (lives in /images/)
+og_image                 : og-image.jpg   # Social media default site image (lives in /images/)
 og_description           : "Mathematician at Universidad Técnica Federico Santa María (Chile) working on control and stabilization of PDEs: boundary controllability, rapid stabilization, Li-ion battery models and neuron stimulation."   # Social media description of the home page
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
