@@ -1,11 +1,62 @@
 ---
-title: "Undergraduate mathematics courses"
+# Para agregar la descripción de un curso, completa "description" (inglés) y
+# "description_es" (español). Si un curso tiene descripción, se despliega con
+# un clic en la página Teaching; si no, se muestra solo el código y nombre.
+title: "Lecturer"
+title_es: "Profesor"
 collection: teaching
 type: "Lecturer"
 permalink: /teaching/2021-03-01-lecturer-usm
+institution: "Universidad Técnica Federico Santa María"
+logo: "/images/logo-usm.png"
 venue: "Universidad Técnica Federico Santa María, Department of Mathematics"
+department: "Department of Mathematics"
+department_es: "Departamento de Matemática"
+period: "2021 – present"
+period_es: "2021 – presente"
 date: 2021-03-01
 location: "Valparaíso, Chile"
+courses:
+  - code: "MAT021"
+    name: ""
+    name_es: ""
+    description: ""
+    description_es: ""
+  - code: "MAT022"
+    name: ""
+    name_es: ""
+    description: ""
+    description_es: ""
+  - code: "MAT023"
+    name: ""
+    name_es: ""
+    description: ""
+    description_es: ""
+  - code: "MAT024"
+    name: ""
+    name_es: ""
+    description: ""
+    description_es: ""
+  - code: "MAT051"
+    name: ""
+    name_es: ""
+    description: ""
+    description_es: ""
+  - code: "MAT052"
+    name: ""
+    name_es: ""
+    description: ""
+    description_es: ""
+  - code: "MAT060"
+    name: ""
+    name_es: ""
+    description: ""
+    description_es: ""
+  - code: "MAT070"
+    name: ""
+    name_es: ""
+    description: ""
+    description_es: ""
 ---
 
 Lecturer since 2021 in undergraduate mathematics courses, including MAT021, MAT022, MAT023, MAT024, MAT051, MAT052, MAT060 and MAT070.

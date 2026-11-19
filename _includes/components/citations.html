@@ -1,20 +1,11 @@
 <!-- Render the citation if supplied -->
 {% if include.citation %}
-Recommended citation: {{ include.citation }}<br />
+<p class="pub-citation"><strong>{% include t.html en="Recommended citation:" es="Cita recomendada:" %}</strong> {{ include.citation }}</p>
 {% endif %}
-<!-- Create the variable so it exists in the event there is no citation -->
-{% assign block = "" %}
-{% if include.paperurl %}
-{% capture block %}{{ block }}<a href="{{ include.paperurl }}">Download Paper</a> | {% endcapture %}
-{% endif %}
-{% if include.slidesurl %}
-{% capture block %}{{ block }}<a href="{{ include.slidesurl }}">Download Slides</a> | {% endcapture %}
-{% endif %}
-{% if include.bibtexurl %}
-{% capture block %}{{ block }}<a href="{{ include.bibtexurl }}">Download BibTeX</a> | {% endcapture %}
-{% endif %}
-<!-- If we have a block, display it after removing the pipe -->
-{% if block.size > 0 %}
-{% assign length = block.size | minus: 3 %}
-{{ block | slice: 0, length }}
+{% if include.paperurl or include.slidesurl or include.bibtexurl %}
+<p class="pub-links">
+  {% if include.paperurl %}<a class="pub-link" href="{{ include.paperurl }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> {% include t.html en="Paper" es="Artículo" %}</a>{% endif %}
+  {% if include.slidesurl %}<a class="pub-link" href="{{ include.slidesurl }}"><i class="fa-solid fa-person-chalkboard" aria-hidden="true"></i> {% include t.html en="Slides" es="Diapositivas" %}</a>{% endif %}
+  {% if include.bibtexurl %}<a class="pub-link" href="{{ include.bibtexurl }}"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> BibTeX</a>{% endif %}
+</p>
 {% endif %}

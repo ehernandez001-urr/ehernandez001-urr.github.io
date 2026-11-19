@@ -1,0 +1,41 @@
+/* ==========================================================================
+    GONDOR THEME - DARK VERSION
+    The city at night: deep slate, parchment text, gold and beacon ember.
+    ========================================================================== */
+
+$gondor-night-bg            : #16191e;
+$gondor-night-raised        : #1e2229;
+$gondor-parchment           : #e7e1d4;
+$gondor-gold-bright         : #d4b062;
+$gondor-ember-bright        : #e48a52;
+
+$background                 : $gondor-night-bg;
+$text                       : $gondor-parchment;
+$link                       : $gondor-gold-bright;
+
+:root[data-theme="dark"],
+html[data-theme="dark"] {
+    --global-base-color                 : #{$gondor-gold-bright};
+    --global-bg-color                   : #{$gondor-night-bg};
+    --global-footer-bg-color            : #{$gondor-night-raised};
+    --global-border-color               : #30353d;
+    --global-dark-border-color          : #454b55;
+    --global-code-background-color      : #1e2229;
+    --global-code-text-color            : #{$gondor-parchment};
+    --global-fig-caption-color          : #a9a296;
+    --global-link-color                 : #{$gondor-gold-bright};
+    --global-link-color-hover           : #{$gondor-ember-bright};
+    --global-link-color-visited         : #{mix(#000, $gondor-gold-bright, 10%)};
+    --global-masthead-link-color        : #{$gondor-parchment};
+    --global-masthead-link-color-hover  : #{$gondor-gold-bright};
+    --global-text-color                 : #{$gondor-parchment};
+    --global-text-color-light           : #a9a296;
+    --global-thead-color                : #{$gondor-night-raised};
+
+    --accent-color                      : #{$gondor-gold-bright};
+    --accent-soft-color                 : #8c7440;
+    --ember-color                       : #{$gondor-ember-bright};
+    --card-bg-color                     : #1b1f25;
+    --card-hover-bg-color               : #232831;
+    --logo-bg-color                     : #f7f5f0;
+}

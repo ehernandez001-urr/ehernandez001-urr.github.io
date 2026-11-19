@@ -4,21 +4,26 @@
   {% assign title = post.title %}
 {% endif %}
 
-<div class="list__item">
+<div class="list__item pub-item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    <details class="pub-details">
+    <details class="pub-details animated-details">
       <summary>
-        <span class="archive__item-title" itemprop="headline">{{ title }}</span>
-        <span class="pub-details__meta"><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</span>
+        <span class="details-chevron" aria-hidden="true"></span>
+        <span class="pub-details__text">
+          <span class="pub-details__title" itemprop="headline">{{ title }}</span>
+          <span class="pub-details__meta"><i>{{ post.venue }}</i> · {{ post.date | default: "1900-01-01" | date: "%Y" }}</span>
+        </span>
       </summary>
-      <div class="pub-details__body">
-        {{ post.content }}
-        {% include /components/citations.html
-            citation=post.citation
-            paperurl=post.paperurl
-            slidesurl=post.slidesurl
-            bibtexurl=post.bibtexurl
-        %}
+      <div class="details-body">
+        <div class="pub-details__body">
+          {{ post.content }}
+          {% include /components/citations.html
+              citation=post.citation
+              paperurl=post.paperurl
+              slidesurl=post.slidesurl
+              bibtexurl=post.bibtexurl
+          %}
+        </div>
       </div>
     </details>
   </article>

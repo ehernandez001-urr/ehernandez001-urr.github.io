@@ -1,14 +1,19 @@
 # Orden de los enlaces del menú superior del sitio.
+# title: texto en inglés · title_es: texto en español
 
 main:
   - title: "Publications"
+    title_es: "Publicaciones"
     url: /publications/
 
   - title: "Talks"
+    title_es: "Charlas"
     url: /talks/
 
   - title: "Teaching"
+    title_es: "Docencia"
     url: /teaching/
 
   - title: "CV"
+    title_es: "CV"
     url: /cv/

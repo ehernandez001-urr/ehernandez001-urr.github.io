@@ -1,0 +1,67 @@
+/* ==========================================================================
+    GONDOR THEME - LIGHT VERSION
+    Inspired by the palette of "The Return of the King": the white stone of
+    Minas Tirith, the steel blue of Gondor, the gold of the crown and the
+    ember of the lit beacons.
+    ========================================================================== */
+
+/* Palette */
+$gondor-stone               : #f7f5f0;   // white stone / parchment
+$gondor-stone-deep          : #ece7dc;
+$gondor-steel               : #2f4256;   // Gondor steel blue
+$gondor-night               : #1d242c;
+$gondor-gold                : #8c6a1c;   // crown gold (darkened for contrast on light)
+$gondor-gold-soft           : #c4a052;
+$gondor-ember               : #a4452a;   // beacon fire
+
+/* Color codes used for the theme */
+$primary-color              : $gondor-steel;
+$gray                       : #6f6b63;
+$dark-gray                  : mix(#000, $gray, 40%);
+$darker-gray                : mix(#000, $gray, 60%);
+$light-gray                 : mix(#fff, $gray, 50%);
+$lighter-gray               : mix(#fff, $gray, 90%);
+
+/* Color codes used for the site */
+$danger-color               : #a4452a;
+$info-color                 : #2f4256;
+$notice-color               : #6f6b63;
+$success-color              : #4f7a4a;
+$warning-color              : #b98a2a;
+
+/* Other basic settings for the template */
+$border-radius              : 6px;
+$box-shadow                 : 0 1px 2px rgba(29, 36, 44, 0.12);
+$global-transition          : all 0.25s ease-in-out;
+$masthead-height            : 70px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+:root {
+    --global-base-color                 : #{$gondor-steel};
+    --global-bg-color                   : #{$gondor-stone};
+    --global-footer-bg-color            : #{$gondor-stone-deep};
+    --global-border-color               : #e2dccf;
+    --global-dark-border-color          : #c9bfa9;
+    --global-code-background-color      : #efebe2;
+    --global-code-text-color            : #{$gondor-night};
+    --global-fig-caption-color          : #{$gray};
+    --global-link-color                 : #{$gondor-steel};
+    --global-link-color-hover           : #{$gondor-ember};
+    --global-link-color-visited         : #{mix(#fff, $gondor-steel, 15%)};
+    --global-masthead-link-color        : #{$gondor-steel};
+    --global-masthead-link-color-hover  : #{$gondor-gold};
+    --global-text-color                 : #2b2d31;
+    --global-text-color-light           : #6f6b63;
+    --global-thead-color                : #{$gondor-stone-deep};
+
+    /* Extra tokens for the personal theme */
+    --accent-color                      : #{$gondor-gold};
+    --accent-soft-color                 : #{$gondor-gold-soft};
+    --ember-color                       : #{$gondor-ember};
+    --card-bg-color                     : #fbfaf7;
+    --card-hover-bg-color               : #f1ece1;
+    --logo-bg-color                     : transparent;
+}

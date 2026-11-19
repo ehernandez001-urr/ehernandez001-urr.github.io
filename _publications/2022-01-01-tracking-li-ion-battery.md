@@ -9,4 +9,13 @@ paperurl: 'https://doi.org/10.3934/mcrf.2021041'
 citation: 'E. Hernández, C. Prieur, E. Cerpa. (2022). &quot;A tracking problem for the state of charge in an electrochemical Li-ion battery model.&quot; <i>Mathematical Control and Related Fields</i>, 12(3), 709–732.'
 ---
 
+<div class="i18n-en" lang="en" markdown="1">
+
 Published version: [https://doi.org/10.3934/mcrf.2021041](https://doi.org/10.3934/mcrf.2021041)
+
+</div>
+<div class="i18n-es" lang="es" markdown="1">
+
+Versión publicada: [https://doi.org/10.3934/mcrf.2021041](https://doi.org/10.3934/mcrf.2021041)
+
+</div>

@@ -1,11 +1,14 @@
 ---
 permalink: /
 title: "About me"
+title_es: "Sobre mí"
 author_profile: true
 redirect_from:
   - /about/
   - /about.html
 ---
+
+<div class="i18n-en" lang="en" markdown="1">
 
 I am a mathematician specializing in the analysis and control of partial differential equations (PDEs). I hold a dual Ph.D. in Mathematics and in Automatic Control from [Universidad Técnica Federico Santa María](https://www.mat.utfsm.cl/) (Chile) and [Université Grenoble Alpes](https://www.univ-grenoble-alpes.fr/) (France), completed under the supervision of Eduardo Cerpa and Christophe Prieur. I currently teach in the Department of Mathematics at Universidad Técnica Federico Santa María in Valparaíso, Chile.
 
@@ -19,3 +22,21 @@ Links
 * [Publications](/publications/)
 * [Google Scholar profile](https://scholar.google.com/citations?user=AilR4IcAAAAJ&hl=en)
 * [Mathematics Genealogy Project](https://www.mathgenealogy.org/id.php?id=278980)
+
+</div>
+<div class="i18n-es" lang="es" markdown="1">
+
+Soy matemático y me especializo en el análisis y control de ecuaciones en derivadas parciales (EDPs). Obtuve un doctorado en cotutela en Matemáticas y en Automática en la [Universidad Técnica Federico Santa María](https://www.mat.utfsm.cl/) (Chile) y la [Université Grenoble Alpes](https://www.univ-grenoble-alpes.fr/) (Francia), bajo la dirección de Eduardo Cerpa y Christophe Prieur. Actualmente hago clases en el Departamento de Matemática de la Universidad Técnica Federico Santa María, en Valparaíso, Chile.
+
+Investigación
+======
+Mi investigación se centra en la controlabilidad y estabilización de EDPs de tipo parabólico, incluyendo control en la frontera, estabilización rápida en presencia de perturbaciones y problemas de seguimiento. También me interesan las aplicaciones del control y el modelamiento, como los modelos electroquímicos de baterías de ion-litio y la respuesta de neuronas a la estimulación por corrientes interferenciales.
+
+Enlaces
+======
+* [Currículum Vitae (PDF)](/files/CV_Esteban_Hernandez_Urrutia.pdf)
+* [Publicaciones](/publications/)
+* [Perfil de Google Scholar](https://scholar.google.com/citations?user=AilR4IcAAAAJ&hl=es)
+* [Mathematics Genealogy Project](https://www.mathgenealogy.org/id.php?id=278980)
+
+</div>

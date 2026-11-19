@@ -1,12 +1,28 @@
 ---
 layout: archive
 title: "Teaching"
+title_es: "Docencia"
 permalink: /teaching/
 author_profile: true
 ---
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single-teaching.html %}
+{% assign groups = site.teaching | sort: "date" | reverse | group_by: "institution" %}
+{% for group in groups %}
+  {% assign first = group.items | first %}
+  <section class="teaching-institution">
+    <header class="teaching-institution__header">
+      {% if first.logo %}
+        <span class="teaching-institution__logo"><img src="{{ base_path }}{{ first.logo }}" alt="{{ group.name }}" loading="lazy" width="600" height="291"></span>
+      {% endif %}
+      <div>
+        <h2 class="teaching-institution__name">{{ group.name | default: first.venue }}</h2>
+        {% if first.location %}<p class="teaching-institution__place"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ first.location }}</p>{% endif %}
+      </div>
+    </header>
+    {% for post in group.items %}
+      {% include archive-single-teaching.html %}
+    {% endfor %}
+  </section>
 {% endfor %}

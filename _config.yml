@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+site_theme               : "gondor" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Esteban Hernández Urrutia"
 title_separator          : "-"
 name                     : &name "Esteban Hernández Urrutia"
@@ -27,6 +27,7 @@ author:
   name             : "Esteban Hernández Urrutia"
   pronouns         : # example: "she/her"  
   bio              : "Mathematician · Control of PDEs"
+  bio_es           : "Matemático · Control de EDPs"
   location         : "Valparaíso, Chile"
   employer         : "Universidad Técnica Federico Santa María"
   uri              : # URL
@@ -86,10 +87,13 @@ author:
 publication_category:
   preprints:
     title: 'Preprints'
+    title_es: 'Preprints'
   manuscripts:
     title: 'Journal Articles'
+    title_es: 'Artículos en revistas'
   theses:
     title: 'Thesis'
+    title_es: 'Tesis'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews

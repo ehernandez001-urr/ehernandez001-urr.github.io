@@ -1,0 +1,408 @@
+/* ==========================================================================
+   SITE CUSTOMIZATIONS
+   Bilingual content, collapsible blocks, transitions and the personal
+   "Gondor" look (see _sass/theme/_gondor_*.scss for the colors).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Language (en/es)
+   Elements with .i18n-en / .i18n-es are shown only for the active language,
+   which head.html sets on <html data-lang="..."> before the page paints.
+   -------------------------------------------------------------------------- */
+
+html[data-lang="es"] .i18n-en,
+html:not([data-lang="es"]) .i18n-es {
+  display: none !important;
+}
+
+@keyframes i18n-fade {
+  from { opacity: 0; transform: translateY(2px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Only animate after the visitor switches language, not on page load */
+html.i18n-anim .i18n-en,
+html.i18n-anim .i18n-es {
+  animation: i18n-fade 0.3s ease-out;
+}
+
+/* --------------------------------------------------------------------------
+   Smooth color changes when switching light/dark theme
+   -------------------------------------------------------------------------- */
+
+body,
+.masthead,
+.masthead__menu-item,
+.greedy-nav,
+.page__footer,
+.pub-item,
+.teaching-role,
+.course {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+
+a {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+::selection {
+  background: rgba(196, 160, 82, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   Masthead: gold hairline and language toggle
+   -------------------------------------------------------------------------- */
+
+.masthead::after {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-color) 20%, var(--accent-color) 80%, transparent);
+  opacity: 0.55;
+}
+
+.greedy-nav .visible-links a:before,
+.greedy-nav .visible-links .masthead__toggles > button:before {
+  height: 2px;
+  background: var(--accent-color);
+}
+
+#lang-toggle {
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* --------------------------------------------------------------------------
+   Page titles and section headings
+   -------------------------------------------------------------------------- */
+
+.page__title {
+  position: relative;
+  padding-bottom: 0.35em;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 3rem;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--accent-color);
+  }
+}
+
+.pub-category {
+  margin-top: 2em;
+  padding-bottom: 0.4em;
+  font-size: $type-size-4;
+  letter-spacing: 0.02em;
+  color: var(--global-base-color);
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+/* --------------------------------------------------------------------------
+   Collapsible blocks (<details class="animated-details">)
+   The opening/closing animation is driven by assets/js/_main.js.
+   -------------------------------------------------------------------------- */
+
+.animated-details {
+  > summary {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6em;
+    cursor: pointer;
+    list-style: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 3px;
+      border-radius: $border-radius;
+    }
+  }
+
+  .details-chevron {
+    flex: 0 0 auto;
+    width: 0.55em;
+    height: 0.55em;
+    margin-top: 0.45em;
+    border-right: 2px solid var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+  }
+
+  &[open] > summary .details-chevron,
+  &.is-open > summary .details-chevron {
+    transform: rotate(45deg);
+  }
+}
+
+.details-body {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-details .details-chevron,
+  html.i18n-anim .i18n-en,
+  html.i18n-anim .i18n-es {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Publications
+   -------------------------------------------------------------------------- */
+
+.pub-item {
+  margin: 0 0 0.9em;
+  border: 1px solid var(--global-border-color);
+  border-left: 3px solid transparent;
+  border-radius: $border-radius;
+  background: var(--card-bg-color);
+
+  .archive__item {
+    margin: 0;
+  }
+
+  &:hover {
+    background: var(--card-hover-bg-color);
+    border-left-color: var(--accent-soft-color);
+  }
+
+  &:has(details[open]) {
+    border-left-color: var(--accent-color);
+  }
+}
+
+.pub-details {
+  > summary {
+    padding: 0.9em 1em;
+  }
+}
+
+.pub-details__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  min-width: 0;
+}
+
+.pub-details__title {
+  font-family: $header-font-family;
+  font-weight: 600;
+  font-size: $type-size-5;
+  line-height: 1.35;
+  color: var(--global-text-color);
+}
+
+.pub-details__meta {
+  font-size: $type-size-6;
+  color: var(--global-text-color-light);
+}
+
+.pub-details__body {
+  padding: 0 1.1em 1em 2.2em;
+  font-size: $type-size-6;
+  overflow-wrap: anywhere;
+
+  p {
+    margin: 0.6em 0;
+  }
+}
+
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.archive .pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.3em 0.8em;
+  border: 1px solid var(--accent-soft-color);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--global-link-color);
+
+  &:hover {
+    text-decoration: none;
+    color: var(--global-bg-color);
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Talks
+   -------------------------------------------------------------------------- */
+
+.talk-item {
+  padding: 0.2em 0 0.8em;
+  border-bottom: 1px solid var(--global-border-color);
+
+  .archive__item-title {
+    font-size: $type-size-5;
+    line-height: 1.35;
+  }
+}
+
+.talk-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em 1.2em;
+  margin: 0 0 0.3em;
+  font-size: $type-size-6;
+  color: var(--global-text-color-light);
+
+  i {
+    color: var(--accent-color);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Teaching
+   -------------------------------------------------------------------------- */
+
+.teaching-institution {
+  margin: 1.5em 0 2.5em;
+}
+
+.teaching-institution__header {
+  display: flex;
+  align-items: center;
+  gap: 1.25em;
+  margin-bottom: 1.25em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.teaching-institution__logo {
+  flex: 0 0 auto;
+  padding: 0.4em 0.6em;
+  border-radius: $border-radius;
+  background: var(--logo-bg-color);
+
+  img {
+    display: block;
+    width: 150px;
+    height: auto;
+  }
+}
+
+.teaching-institution__name {
+  margin: 0;
+  font-size: $type-size-4;
+  border: 0;
+}
+
+.teaching-institution__place {
+  margin: 0.2em 0 0;
+  font-size: $type-size-6;
+  color: var(--global-text-color-light);
+
+  i {
+    color: var(--accent-color);
+  }
+}
+
+.teaching-role {
+  margin-bottom: 1.75em;
+}
+
+.teaching-role__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25em 0.75em;
+  margin: 0 0 0.2em;
+  font-size: $type-size-5;
+}
+
+.teaching-role__period {
+  font-size: $type-size-6;
+  font-weight: 400;
+  color: var(--global-text-color-light);
+}
+
+.teaching-role__dept {
+  margin: 0 0 0.5em;
+  font-size: $type-size-6;
+  color: var(--global-text-color-light);
+}
+
+.course-list {
+  margin: 0.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.course {
+  margin: 0;
+  padding: 0.55em 0.8em;
+  border-left: 2px solid var(--global-border-color);
+  font-size: 0.9em;
+
+  &:hover {
+    border-left-color: var(--accent-color);
+  }
+
+  & + & {
+    border-top: 1px dashed var(--global-border-color);
+  }
+}
+
+.course__code {
+  display: inline-block;
+  min-width: 4.5em;
+  margin-right: 0.6em;
+  font-family: $monospace;
+  font-size: 0.9em;
+  font-weight: 700;
+  color: var(--global-base-color);
+}
+
+.course__description {
+  padding: 0.4em 0 0.2em 1.2em;
+  font-size: $type-size-6;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile
+   -------------------------------------------------------------------------- */
+
+@media (max-width: $small) {
+  .page__title {
+    font-size: $type-size-3;
+  }
+
+  .pub-details > summary {
+    padding: 0.8em 0.75em;
+  }
+
+  .pub-details__body {
+    padding: 0 0.75em 0.9em 0.75em;
+  }
+
+  .teaching-institution__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75em;
+  }
+
+  .teaching-institution__logo img {
+    width: 130px;
+  }
+
+  .greedy-nav .visible-links .masthead__toggles > button {
+    margin-left: 0.5rem;
+  }
+}

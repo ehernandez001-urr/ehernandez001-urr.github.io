@@ -163,6 +163,51 @@ $(document).ready(function () {
   // Enable the theme toggle
   $('#theme-toggle').on('click', toggleTheme);
 
+  // Enable the language toggle (en/es). The initial language is set inline in head.html.
+  $('#lang-toggle').on('click', function () {
+    const root = document.documentElement;
+    const next = root.getAttribute('data-lang') === 'es' ? 'en' : 'es';
+    try { localStorage.setItem('lang', next); } catch (e) { }
+    root.classList.add('i18n-anim');
+    root.setAttribute('data-lang', next);
+    root.setAttribute('lang', next);
+    $(window).trigger('resize'); // re-fit the navigation and the sticky footer
+  });
+
+  // Animate opening and closing of collapsible blocks (<details class="animated-details">)
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('details.animated-details').forEach(function (details) {
+    const summary = details.querySelector('summary');
+    const body = details.querySelector('.details-body');
+    if (!summary || !body || !body.animate) { return; }
+    let animation = null;
+    summary.addEventListener('click', function (event) {
+      if (reduceMotion.matches) { return; }
+      event.preventDefault();
+      if (animation) { animation.cancel(); }
+      const opening = !details.open;
+      details.classList.toggle('is-open', opening);
+      if (opening) { details.open = true; }
+      const height = body.scrollHeight;
+      body.style.overflow = 'hidden';
+      animation = body.animate(
+        opening
+          ? [{ height: '0px', opacity: 0 }, { height: height + 'px', opacity: 1 }]
+          : [{ height: height + 'px', opacity: 1 }, { height: '0px', opacity: 0 }],
+        { duration: opening ? 320 : 240, easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)' }
+      );
+      animation.onfinish = function () {
+        if (!opening) { details.open = false; }
+        body.style.overflow = '';
+        animation = null;
+        bumpIt();
+      };
+    });
+    details.addEventListener('toggle', function () {
+      details.classList.toggle('is-open', details.open);
+    });
+  });
+
   // Enable the sticky footer
   var bumpIt = function () {
     $("body").css("padding-bottom", "0");

@@ -8,4 +8,13 @@ venue: 'Ph.D. thesis, Universidad Técnica Federico Santa María & Université G
 citation: 'E. Hernández. (2021). <i>Controlabilidad en la frontera, estabilización y problemas de seguimiento para sistemas parabólicos</i>. Ph.D. thesis (dual degree), Universidad Técnica Federico Santa María & Université Grenoble Alpes.'
 ---
 
+<div class="i18n-en" lang="en" markdown="1">
+
 Dual-degree Ph.D. thesis in Mathematics and Automatic Control, supervised by Eduardo Cerpa and Christophe Prieur.
+
+</div>
+<div class="i18n-es" lang="es" markdown="1">
+
+Tesis de doctorado en cotutela en Matemáticas y Automática, dirigida por Eduardo Cerpa y Christophe Prieur.
+
+</div>

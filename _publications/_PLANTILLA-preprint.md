@@ -13,4 +13,13 @@ paperurl: '/files/preprint-2027.pdf'
 citation: 'Coautor, A., E. Hernández. (2027). &quot;Título del preprint.&quot; Preprint.'
 ---
 
-Breve resumen opcional del trabajo.
+<div class="i18n-en" lang="en" markdown="1">
+
+Optional short summary in English.
+
+</div>
+<div class="i18n-es" lang="es" markdown="1">
+
+Breve resumen opcional del trabajo en español.
+
+</div>

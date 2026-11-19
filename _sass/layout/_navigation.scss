@@ -178,7 +178,7 @@
   background: var(--global-bg-color);
 
   a,
-  #theme-toggle > button {
+  .masthead__toggles > button {
     display: block;
     margin: 0 1rem;
     padding: 0.5rem 0;
@@ -227,11 +227,17 @@
       }
     }
 
-    #theme-toggle {
+    .masthead__toggles {
+      white-space: nowrap;
+
       > button {
         margin-right: 0;
-        width: 25px;
-        display: flex;
+        margin-left: 0.75rem;
+        min-width: 25px;
+        min-height: 2.25rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3em;
         justify-content: center;
         cursor: pointer;
         background: transparent;
@@ -247,7 +253,7 @@
     }
 
     a,
-    #theme-toggle > button {
+    .masthead__toggles > button {
       position: relative;
 
       &:before {

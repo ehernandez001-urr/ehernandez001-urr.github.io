@@ -1,36 +1,25 @@
-{% include base_path %}
-
-{% if post.header.teaser %}
-  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
-{% else %}
-  {% assign teaser = site.teaser %}
-{% endif %}
-
 {% if post.id %}
   {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
 {% else %}
   {% assign title = post.title %}
 {% endif %}
 
-<div class="{{ include.type | default: "list" }}__item">
+{% case post.type %}
+  {% when "Talk" %}{% assign type_es = "Charla" %}
+  {% when "Poster" %}{% assign type_es = "Póster" %}
+  {% when "Seminar" %}{% assign type_es = "Seminario" %}
+  {% when "Workshop" %}{% assign type_es = "Taller" %}
+  {% else %}{% assign type_es = post.type_es | default: post.type %}
+{% endcase %}
+
+<div class="list__item talk-item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    {% if include.type == "grid" and teaser %}
-      <div class="archive__item-teaser">
-        <img src=
-          {% if teaser contains "://" %}
-            "{{ teaser }}"
-          {% else %}
-            "{{ teaser | prepend: "/images/" | prepend: base_path }}"
-          {% endif %}
-          alt="">
-      </div>
-    {% endif %}
     <h2 class="archive__item-title" itemprop="headline">{{ title }}</h2>
-    {% if post.read_time %}
-      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
-    {% endif %}
-    {% if post.date %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}</p>{% endif %}
-    {% if post.venue %}<p class="archive__item-excerpt" itemprop="description">{{post.type}}, {{ post.venue }},  {{post.location}}</p>{% endif %}
-    {% if post.excerpt %}<div class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</div>{% endif %}
+    <p class="talk-item__meta">
+      {% if post.date %}<span class="talk-item__date"><i class="fa-solid fa-calendar" aria-hidden="true"></i> {% include date-i18n.html date=post.date %}</span>{% endif %}
+      {% if post.location %}<span class="talk-item__place"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ post.location }}</span>{% endif %}
+    </p>
+    {% if post.venue %}<p class="archive__item-excerpt" itemprop="description">{% include t.html en=post.type es=type_es %} · {{ post.venue }}</p>{% endif %}
+    {% if post.excerpt and post.content != "" %}<div class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</div>{% endif %}
   </article>
 </div>

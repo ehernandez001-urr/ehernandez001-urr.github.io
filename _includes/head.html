@@ -9,6 +9,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>
+  // Language (en/es): stored choice, otherwise the browser language. Runs before paint to avoid a flash.
+  (function () {
+    var lang = null;
+    try { lang = localStorage.getItem('lang'); } catch (e) {}
+    if (lang !== 'en' && lang !== 'es') {
+      lang = (navigator.language || '').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+    }
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+  })();
+</script>
+
+<script>
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 </script>
 

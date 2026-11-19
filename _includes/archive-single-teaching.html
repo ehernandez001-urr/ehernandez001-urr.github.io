@@ -1,13 +1,37 @@
-{% if post.id %}
-  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
-{% else %}
-  {% assign title = post.title %}
-{% endif %}
+<article class="teaching-role" itemscope itemtype="http://schema.org/CreativeWork">
+  <h3 class="teaching-role__title" itemprop="headline">
+    {% include t.html en=post.title es=post.title_es %}
+    {% if post.period %}<span class="teaching-role__period">{% include t.html en=post.period es=post.period_es %}</span>{% endif %}
+  </h3>
+  {% if post.department %}<p class="teaching-role__dept">{% include t.html en=post.department es=post.department_es %}</p>{% endif %}
 
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    <h2 class="archive__item-title" itemprop="headline">{{ title }}</h2>
-    <p>{{ post.type }}, <i>{{ post.venue }}</i>{% if post.location %}, {{ post.location }}{% endif %}</p>
+  {% if post.courses %}
+    <ul class="course-list">
+      {% for course in post.courses %}
+        {% capture course_label %}{% if course.code and course.code != "" %}<span class="course__code">{{ course.code }}</span>{% endif %}{% if course.name and course.name != "" %}<span class="course__name">{% include t.html en=course.name es=course.name_es %}</span>{% endif %}{% endcapture %}
+        {% assign has_desc = false %}
+        {% if course.description and course.description != "" %}{% assign has_desc = true %}{% endif %}
+        {% if course.description_es and course.description_es != "" %}{% assign has_desc = true %}{% endif %}
+        {% if has_desc %}
+          <li class="course course--expandable">
+            <details class="animated-details">
+              <summary><span class="details-chevron" aria-hidden="true"></span>{{ course_label }}</summary>
+              <div class="details-body">
+                <div class="course__description">
+                  {% assign desc_es = course.description_es | default: course.description %}
+                  {% assign desc_en = course.description | default: course.description_es %}
+                  <div class="i18n-en" lang="en">{{ desc_en | markdownify }}</div>
+                  <div class="i18n-es" lang="es">{{ desc_es | markdownify }}</div>
+                </div>
+              </div>
+            </details>
+          </li>
+        {% else %}
+          <li class="course">{{ course_label }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% else %}
     <div class="archive__item-excerpt" itemprop="description">{{ post.content }}</div>
-  </article>
-</div>
+  {% endif %}
+</article>

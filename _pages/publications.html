@@ -1,12 +1,13 @@
 ---
 layout: archive
 title: "Publications"
+title_es: "Publicaciones"
 permalink: /publications/
 author_profile: true
 ---
 
 {% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+  <div class="wordwrap"><span class="i18n-en" lang="en">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</span><span class="i18n-es" lang="es">También puedes encontrar mis artículos en <a href="{{site.author.googlescholar}}">mi perfil de Google Scholar</a>.</span></div>
 {% endif %}
 
 {% include base_path %}
@@ -20,7 +21,8 @@ author_profile: true
         {% continue %}
       {% endif %}
       {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
+        {% assign cat_title = category[1].title %}{% assign cat_title_es = category[1].title_es %}
+        <h2 class="pub-category">{% include t.html en=cat_title es=cat_title_es %}</h2>
         {% assign title_shown = true %}
       {% endunless %}
       {% include archive-single-publication.html %}
