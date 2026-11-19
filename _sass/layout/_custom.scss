@@ -737,3 +737,18 @@ mjx-container[display="true"] {
 .timeline__item::before {
   top: 0.55em;
 }
+
+/* Sidebar (desktop): let long location/employer lines wrap, aligned after their icon */
+@media screen and (min-width: $sidebar-screen-min-width) {
+  .sidebar .author__urls li.author__desktop {
+    display: flex;
+    align-items: baseline;
+    white-space: normal;
+    line-height: 1.35;
+    margin-bottom: 5px;
+
+    > i {
+      flex-shrink: 0;
+    }
+  }
+}
