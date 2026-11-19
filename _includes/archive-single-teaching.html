@@ -1,0 +1,13 @@
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    <h2 class="archive__item-title" itemprop="headline">{{ title }}</h2>
+    <p>{{ post.type }}, <i>{{ post.venue }}</i>{% if post.location %}, {{ post.location }}{% endif %}</p>
+    <div class="archive__item-excerpt" itemprop="description">{{ post.content }}</div>
+  </article>
+</div>

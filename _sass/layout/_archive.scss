@@ -243,3 +243,29 @@
     }
   }
 }
+
+/* Collapsible publications */
+
+.pub-details {
+  summary {
+    cursor: pointer;
+    list-style-position: outside;
+    margin-left: 1em;
+
+    .archive__item-title {
+      display: inline;
+      margin: 0;
+    }
+  }
+
+  .pub-details__meta {
+    display: block;
+    margin-top: 0.25em;
+    font-size: $type-size-6;
+  }
+
+  .pub-details__body {
+    margin: 0.75em 0 0 1em;
+    font-size: $type-size-6;
+  }
+}

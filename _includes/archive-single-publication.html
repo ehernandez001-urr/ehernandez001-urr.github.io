@@ -1,0 +1,25 @@
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    <details class="pub-details">
+      <summary>
+        <span class="archive__item-title" itemprop="headline">{{ title }}</span>
+        <span class="pub-details__meta"><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</span>
+      </summary>
+      <div class="pub-details__body">
+        {{ post.content }}
+        {% include /components/citations.html
+            citation=post.citation
+            paperurl=post.paperurl
+            slidesurl=post.slidesurl
+            bibtexurl=post.bibtexurl
+        %}
+      </div>
+    </details>
+  </article>
+</div>
