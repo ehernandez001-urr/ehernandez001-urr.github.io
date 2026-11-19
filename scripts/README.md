@@ -1,24 +1,18 @@
 # scripts/
 
-Utility scripts for the Academic Pages template.
+## `og-image.html`
 
-## `make-og-image.py`
+Source of the social preview image `images/og-image.png` (1200x630), used by
+`_includes/seo.html` for Open Graph / Twitter cards. It uses the site palette
+and the EB Garamond / Source Sans 3 fonts (loaded from Google Fonts).
 
-Generates the default Open Graph / social preview image at
-`images/og-image.png` (1200x630 PNG) used by `_includes/seo.html` when a page
-does not define its own header image.
+To regenerate it after editing the HTML, take a 1200x630 screenshot with
+headless Chrome:
 
 ```
-python3 scripts/make-og-image.py
+chrome --headless=new --hide-scrollbars --window-size=1200,630 \
+  --virtual-time-budget=8000 --screenshot=images/og-image.png \
+  scripts/og-image.html
 ```
 
-Requirements:
-
-- Python 3 with [Pillow](https://python-pillow.org) (`pip install Pillow`)
-- A TrueType font; defaults to DejaVu Sans (`/usr/share/fonts/truetype/dejavu`),
-  override with the `FONT_DIR` environment variable
-- The site favicon at `images/favicon-512x512.png` (already in the template);
-  it is composited as the card logo
-
-The output is byte-reproducible for a given Pillow/font version and is committed
-to the repo, so the build itself does not need Pillow.
+This folder is excluded from the Jekyll build.
