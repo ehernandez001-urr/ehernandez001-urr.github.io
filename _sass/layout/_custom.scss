@@ -418,6 +418,24 @@ a {
   }
 }
 
+/* Narrow phones: keep the site name on a single line, scaling it with the viewport */
+@media (max-width: 420px) {
+  .greedy-nav .visible-links li.masthead__menu-item--lg {
+    white-space: nowrap;
+    text-wrap: nowrap;
+    padding-right: 0.5em;
+  }
+
+  .masthead__menu-item--lg a {
+    font-size: clamp(0.75rem, calc(4.6vw - 2px), 1.15rem);
+    letter-spacing: 0;
+  }
+
+  .greedy-nav .visible-links .masthead__toggles > button {
+    margin-left: 0.4rem;
+  }
+}
+
 /* --------------------------------------------------------------------------
    Typography: EB Garamond for headings, Source Sans 3 for text
    -------------------------------------------------------------------------- */
