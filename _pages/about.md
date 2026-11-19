@@ -16,13 +16,6 @@ Research
 ======
 My research focuses on the controllability and stabilization of parabolic-type PDEs, including boundary control, rapid stabilization in the presence of disturbances, and tracking problems. I am also interested in applications of control and modelling, such as electrochemical Li-ion battery models and the response of neurons to interferential current stimulation.
 
-Links
-======
-* [Curriculum Vitae (PDF)](/files/CV_Esteban_Hernandez_Urrutia.pdf)
-* [Publications](/publications/)
-* [Google Scholar profile](https://scholar.google.com/citations?user=AilR4IcAAAAJ&hl=en)
-* [Mathematics Genealogy Project](https://www.mathgenealogy.org/id.php?id=278980)
-
 </div>
 <div class="i18n-es" lang="es" markdown="1">
 
@@ -32,9 +25,25 @@ Investigación
 ======
 Mi investigación se centra en la controlabilidad y estabilización de EDPs de tipo parabólico, incluyendo control en la frontera, estabilización rápida en presencia de perturbaciones y problemas de seguimiento. También me interesan las aplicaciones del control y el modelamiento, como los modelos electroquímicos de baterías de ion-litio y la respuesta de neuronas a la estimulación por corrientes interferenciales.
 
+</div>
+
+{% include research-cards.html %}
+
+<div class="i18n-en" lang="en" markdown="1">
+
+Links
+======
+* Curriculum Vitae (PDF): [English](/files/CV_Esteban_Hernandez_Urrutia_EN.pdf) · [Spanish](/files/CV_Esteban_Hernandez_Urrutia.pdf)
+* [Publications](/publications/)
+* [Google Scholar profile](https://scholar.google.com/citations?user=AilR4IcAAAAJ&hl=en)
+* [Mathematics Genealogy Project](https://www.mathgenealogy.org/id.php?id=278980)
+
+</div>
+<div class="i18n-es" lang="es" markdown="1">
+
 Enlaces
 ======
-* [Currículum Vitae (PDF)](/files/CV_Esteban_Hernandez_Urrutia.pdf)
+* Currículum Vitae (PDF): [español](/files/CV_Esteban_Hernandez_Urrutia.pdf) · [inglés](/files/CV_Esteban_Hernandez_Urrutia_EN.pdf)
 * [Publicaciones](/publications/)
 * [Perfil de Google Scholar](https://scholar.google.com/citations?user=AilR4IcAAAAJ&hl=es)
 * [Mathematics Genealogy Project](https://www.mathgenealogy.org/id.php?id=278980)

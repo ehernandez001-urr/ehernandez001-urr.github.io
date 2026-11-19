@@ -14,7 +14,7 @@
 
 <div class="list__item talk-item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    <h2 class="archive__item-title" itemprop="headline">{{ title }}</h2>
+    <h3 class="archive__item-title" itemprop="headline">{{ title }}</h3>
     <p class="talk-item__meta">
       {% if post.date %}<span class="talk-item__date"><i class="fa-solid fa-calendar" aria-hidden="true"></i> {% include date-i18n.html date=post.date %}</span>{% endif %}
       {% if post.location %}<span class="talk-item__place"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ post.location }}</span>{% endif %}

@@ -4,6 +4,24 @@
   {% assign title = post.title %}
 {% endif %}
 
+{% comment %} Status badge: front matter "status" (submitted | accepted | published | preprint) or the category {% endcomment %}
+{% assign status = post.status %}
+{% unless status %}
+  {% case post.category %}
+    {% when "manuscripts" %}{% assign status = "published" %}
+    {% when "preprints" %}{% assign status = "preprint" %}
+    {% when "theses" %}{% assign status = "thesis" %}
+  {% endcase %}
+{% endunless %}
+{% case status %}
+  {% when "submitted" %}{% assign badge_en = "Under review" %}{% assign badge_es = "En revisión" %}
+  {% when "accepted" %}{% assign badge_en = "Accepted" %}{% assign badge_es = "Aceptado" %}
+  {% when "published" %}{% assign badge_en = "Published" %}{% assign badge_es = "Publicado" %}
+  {% when "preprint" %}{% assign badge_en = "Preprint" %}{% assign badge_es = "Preprint" %}
+  {% when "thesis" %}{% assign badge_en = "Thesis" %}{% assign badge_es = "Tesis" %}
+  {% else %}{% assign badge_en = nil %}
+{% endcase %}
+
 <div class="list__item pub-item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     <details class="pub-details animated-details">
@@ -11,7 +29,7 @@
         <span class="details-chevron" aria-hidden="true"></span>
         <span class="pub-details__text">
           <span class="pub-details__title" itemprop="headline">{{ title }}</span>
-          <span class="pub-details__meta"><i>{{ post.venue }}</i> · {{ post.date | default: "1900-01-01" | date: "%Y" }}</span>
+          <span class="pub-details__meta">{% if badge_en %}<span class="pub-badge pub-badge--{{ status }}">{% include t.html en=badge_en es=badge_es %}</span>{% endif %}<span><i>{{ post.venue }}</i> · {{ post.date | default: "1900-01-01" | date: "%Y" }}</span></span>
         </span>
       </summary>
       <div class="details-body">

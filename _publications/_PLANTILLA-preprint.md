@@ -6,6 +6,7 @@
 title: "Título del preprint"
 collection: publications
 category: preprints
+status: preprint   # preprint | submitted (en revisión) | accepted (aceptado) | published
 permalink: /publication/2027-01-15-titulo-corto
 date: 2027-01-15
 venue: 'Preprint'

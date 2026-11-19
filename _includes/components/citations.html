@@ -1,9 +1,11 @@
 <!-- Render the citation if supplied -->
 {% if include.citation %}
 <p class="pub-citation"><strong>{% include t.html en="Recommended citation:" es="Cita recomendada:" %}</strong> {{ include.citation }}</p>
+{% assign cite_plain = include.citation | strip_html | replace: '"', '&quot;' %}
 {% endif %}
-{% if include.paperurl or include.slidesurl or include.bibtexurl %}
+{% if include.paperurl or include.slidesurl or include.bibtexurl or include.citation %}
 <p class="pub-links">
+  {% if include.citation %}<button type="button" class="pub-link copy-cite" data-cite="{{ cite_plain }}"><i class="fa-solid fa-copy" aria-hidden="true"></i> <span class="copy-cite__label">{% include t.html en="Copy citation" es="Copiar cita" %}</span><span class="copy-cite__done">{% include t.html en="Copied!" es="¡Copiada!" %}</span></button>{% endif %}
   {% if include.paperurl %}<a class="pub-link" href="{{ include.paperurl }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> {% include t.html en="Paper" es="Artículo" %}</a>{% endif %}
   {% if include.slidesurl %}<a class="pub-link" href="{{ include.slidesurl }}"><i class="fa-solid fa-person-chalkboard" aria-hidden="true"></i> {% include t.html en="Slides" es="Diapositivas" %}</a>{% endif %}
   {% if include.bibtexurl %}<a class="pub-link" href="{{ include.bibtexurl }}"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> BibTeX</a>{% endif %}

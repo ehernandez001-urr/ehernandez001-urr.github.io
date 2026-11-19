@@ -12,7 +12,7 @@ redirect_from:
 
 <div class="i18n-en" lang="en" markdown="1">
 
-**[Download my full CV (PDF)](/files/CV_Esteban_Hernandez_Urrutia.pdf)**
+<p class="cv-downloads"><a class="pub-link" href="/files/CV_Esteban_Hernandez_Urrutia_EN.pdf"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Full CV (English)</a> <a class="pub-link" href="/files/CV_Esteban_Hernandez_Urrutia.pdf"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Full CV (Spanish)</a></p>
 
 Education
 ======
@@ -33,7 +33,7 @@ Research experience
 </div>
 <div class="i18n-es" lang="es" markdown="1">
 
-**[Descargar mi CV completo (PDF)](/files/CV_Esteban_Hernandez_Urrutia.pdf)**
+<p class="cv-downloads"><a class="pub-link" href="/files/CV_Esteban_Hernandez_Urrutia.pdf"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> CV completo (español)</a> <a class="pub-link" href="/files/CV_Esteban_Hernandez_Urrutia_EN.pdf"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> CV completo (inglés)</a></p>
 
 Formación
 ======

@@ -40,8 +40,12 @@ $type-size-6                : 0.75em;   // ~12px
 $type-size-7                : 0.6875em; // ~11px
 $type-size-8                : 0.625em;  // ~10px
 
-$global-font-family         : $sans-serif;
-$header-font-family         : $sans-serif;
+$display-serif              : "EB Garamond", Garamond, Georgia, serif;
+$text-sans                  : "Source Sans 3", $sans-serif;
+$sans-serif-narrow          : $text-sans;
+
+$global-font-family         : $text-sans;
+$header-font-family         : $display-serif;
 $caption-font-family        : $serif;
 
 /* ==========================================================================

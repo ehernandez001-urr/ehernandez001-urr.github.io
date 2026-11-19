@@ -31,7 +31,7 @@ author:
   location         : "Valparaíso, Chile"
   employer         : "Universidad Técnica Federico Santa María"
   uri              : # URL
-  email            : "e.hernandez001@gmail.com" 
+  email            : "esteban.hernandez@usm.cl" 
 
   # Academic websites
   academia         : # URL
@@ -178,6 +178,7 @@ exclude:
   - .jekyll-assets-cache
   - .sass-cache
   - assets/js/_main.js
+  - files/cv-source
   - assets/js/plugins
   - assets/js/vendor
   - CHANGELOG

@@ -417,3 +417,260 @@ a {
     margin-left: 0.5rem;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Typography: EB Garamond for headings, Source Sans 3 for text
+   -------------------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6,
+.page__title,
+.archive__item-title,
+.author__name {
+  font-family: $header-font-family;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+
+.page__title {
+  font-size: $type-size-2;
+}
+
+.page__content h1,
+.archive > h1,
+.page__content h2 {
+  color: var(--global-base-color);
+}
+
+.archive__item-title,
+.talk-item .archive__item-title {
+  font-size: 1.15em;
+}
+
+.masthead__menu-item--lg a {
+  font-family: $header-font-family;
+  font-size: 1.15em;
+  letter-spacing: 0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   Front page: research topic cards
+   -------------------------------------------------------------------------- */
+
+.research-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1em;
+  margin: 1.5em 0 2em;
+}
+
+.research-card {
+  padding: 1.1em 1.1em 0.9em;
+  border: 1px solid var(--global-border-color);
+  border-top: 3px solid var(--accent-color);
+  border-radius: $border-radius;
+  background: var(--card-bg-color);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.35s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    background: var(--card-hover-bg-color);
+  }
+}
+
+.research-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4em;
+  height: 2.4em;
+  border-radius: 50%;
+  font-size: 1.1em;
+  color: var(--accent-color);
+  background: var(--card-hover-bg-color);
+  border: 1px solid var(--accent-soft-color);
+
+  svg {
+    width: 1.3em;
+    height: 1.3em;
+  }
+}
+
+.page__content .research-card__title,
+.research-card__title {
+  margin: 0.6em 0 0.3em;
+  font-size: 1.2em;
+  color: var(--global-text-color);
+}
+
+.research-card__text {
+  margin: 0;
+  font-size: $type-size-6;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+}
+
+/* --------------------------------------------------------------------------
+   Publications: status badges and copy-citation button
+   -------------------------------------------------------------------------- */
+
+.pub-details__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3em 0.6em;
+}
+
+.pub-badge {
+  display: inline-block;
+  padding: 0.1em 0.6em;
+  border-radius: 999px;
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+
+  &--published  { color: var(--global-base-color); }
+  &--accepted   { color: var(--accent-color); }
+  &--submitted  { color: var(--ember-color); }
+  &--preprint   { color: var(--global-text-color-light); }
+  &--thesis     { color: var(--accent-color); }
+}
+
+.copy-cite {
+  font: inherit;
+  cursor: pointer;
+  background: transparent;
+
+  .copy-cite__done { display: none; }
+
+  &.is-copied {
+    .copy-cite__label { display: none; }
+    .copy-cite__done { display: inline; }
+    color: var(--global-bg-color);
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+}
+
+.cv-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+}
+
+/* --------------------------------------------------------------------------
+   Talks: vertical timeline grouped by year
+   -------------------------------------------------------------------------- */
+
+.timeline {
+  position: relative;
+  margin-top: 1em;
+}
+
+.timeline__year {
+  position: relative;
+  padding-left: 1.75em;
+
+  /* vertical line */
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0.4em;
+    top: 0.4em;
+    bottom: 0;
+    width: 2px;
+    background: var(--global-border-color);
+  }
+
+  &:last-child::before {
+    bottom: 1.5em;
+  }
+}
+
+.archive .timeline__year-label {
+  position: relative;
+  margin: 0 0 0.5em;
+  padding: 0.1em 0;
+  font-size: $type-size-4;
+  color: var(--accent-color);
+
+  /* year marker */
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1.75em;
+    top: 50%;
+    width: 0.85em;
+    height: 0.85em;
+    margin-top: -0.425em;
+    border-radius: 50%;
+    background: var(--accent-color);
+    box-shadow: 0 0 0 4px var(--global-bg-color);
+  }
+}
+
+.timeline__items {
+  margin: 0 0 1.5em;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline__item {
+  position: relative;
+  margin: 0;
+
+  /* talk dot */
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1.53em;
+    top: 1.35em;
+    width: 0.45em;
+    height: 0.45em;
+    border-radius: 50%;
+    border: 2px solid var(--accent-soft-color);
+    background: var(--global-bg-color);
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+  }
+
+  &:hover::before {
+    background: var(--ember-color);
+    border-color: var(--ember-color);
+  }
+
+  .talk-item {
+    border-bottom: 0;
+    padding-bottom: 0.4em;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Math (MathJax): quiet display equations that follow the palette
+   -------------------------------------------------------------------------- */
+
+mjx-container {
+  color: var(--global-text-color);
+}
+
+mjx-container[display="true"] {
+  display: block;
+  margin: 1em 0 !important;
+  padding: 0.7em 1em;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-left: 3px solid var(--accent-soft-color);
+  border-radius: 0 $border-radius $border-radius 0;
+  background: var(--card-bg-color);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.page__footer-copyright {
+  font-size: $type-size-6;
+  letter-spacing: 0.04em;
+  color: var(--global-text-color-light);
+}

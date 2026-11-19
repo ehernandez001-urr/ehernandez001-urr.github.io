@@ -1,0 +1,27 @@
+# Tarjetas de temas de investigación en la portada.
+# icon: nombre de un archivo en _includes/icons/ (íconos Tabler, https://icon-sets.iconify.design/tabler/)
+# Para agregar un ícono nuevo: descarga https://api.iconify.design/tabler/<nombre>.svg a _includes/icons/
+
+- icon: adjustments-horizontal
+  title: "Boundary controllability"
+  title_es: "Controlabilidad en la frontera"
+  text: "Steering parabolic PDEs to a desired state by acting only on the boundary of the domain."
+  text_es: "Llevar EDPs parabólicas a un estado deseado actuando solo en la frontera del dominio."
+
+- icon: temperature
+  title: "Rapid stabilization"
+  title_es: "Estabilización rápida"
+  text: "Feedback laws that stabilize unstable heat equations, even with disturbances at the flux boundary condition."
+  text_es: "Leyes de retroalimentación que estabilizan ecuaciones del calor inestables, incluso con perturbaciones en la condición de flujo."
+
+- icon: battery-charging-2
+  title: "Li-ion battery models"
+  title_es: "Modelos de baterías de ion-litio"
+  text: "Tracking the state of charge and identifying parameters in electrochemical battery models."
+  text_es: "Seguimiento del estado de carga e identificación de parámetros en modelos electroquímicos de baterías."
+
+- icon: brain
+  title: "Neuron stimulation"
+  title_es: "Estimulación neuronal"
+  text: "Averaged models of neuron responses to interferential currents and FitzHugh–Nagumo systems with oscillating sources."
+  text_es: "Modelos promediados de la respuesta neuronal a corrientes interferenciales y sistemas de FitzHugh–Nagumo con fuentes oscilantes."

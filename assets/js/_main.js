@@ -174,6 +174,30 @@ $(document).ready(function () {
     $(window).trigger('resize'); // re-fit the navigation and the sticky footer
   });
 
+  // Copy a publication's citation to the clipboard
+  document.querySelectorAll('.copy-cite').forEach(function (button) {
+    button.addEventListener('click', function () {
+      const text = button.getAttribute('data-cite') || '';
+      const done = function () {
+        button.classList.add('is-copied');
+        setTimeout(function () { button.classList.remove('is-copied'); }, 1800);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done);
+      } else {
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'absolute';
+        area.style.left = '-9999px';
+        document.body.appendChild(area);
+        area.select();
+        try { document.execCommand('copy'); done(); } catch (e) { }
+        document.body.removeChild(area);
+      }
+    });
+  });
+
   // Animate opening and closing of collapsible blocks (<details class="animated-details">)
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('details.animated-details').forEach(function (details) {

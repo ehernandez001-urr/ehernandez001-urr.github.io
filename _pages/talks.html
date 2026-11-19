@@ -7,11 +7,21 @@ author_profile: true
 ---
 
 {% if site.talkmap_link == true %}
-
 <p><a href="/talkmap.html">{% include t.html en="See a map of all the places I've given a talk" es="Ver un mapa de los lugares donde he dado charlas" %}</a></p>
-
 {% endif %}
 
-{% for post in site.talks reversed %}
-  {% include archive-single-talk.html %}
-{% endfor %}
+{% assign talks_by_year = site.talks | sort: "date" | reverse | group_by_exp: "talk", "talk.date | date: '%Y'" %}
+<div class="timeline">
+  {% for year in talks_by_year %}
+    <section class="timeline__year">
+      <h2 class="timeline__year-label">{{ year.name }}</h2>
+      <ol class="timeline__items">
+        {% for post in year.items %}
+          <li class="timeline__item">
+            {% include archive-single-talk.html %}
+          </li>
+        {% endfor %}
+      </ol>
+    </section>
+  {% endfor %}
+</div>
