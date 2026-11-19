@@ -20,6 +20,11 @@ var addressPoints = [
     -71.3187697
   ],
   [
+    "Boundary Control Method, una introducci\u00f3n<br />Seminario de Control y Problemas Inversos, USM; Valpara\u00edso, Chile",
+    -33.0458456,
+    -71.6196749
+  ],
+  [
     "Adaptive control for parameter identification in parabolic models of Li-ion batteries<br />COMCA (parallel session); Arica, Chile",
     -18.4785288,
     -70.3211394
