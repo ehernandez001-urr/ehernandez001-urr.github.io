@@ -458,7 +458,7 @@ h1, h2, h3, h4, h5, h6,
 
 .research-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1em;
   margin: 1.5em 0 2em;
 }
@@ -673,4 +673,17 @@ mjx-container[display="true"] {
   font-size: $type-size-6;
   letter-spacing: 0.04em;
   color: var(--global-text-color-light);
+}
+
+/* Timeline spacing: no collapsed heading margin above each talk */
+.timeline__item .archive__item-title {
+  margin-top: 0;
+}
+
+.timeline__item .archive__item {
+  padding-top: 0.2em;
+}
+
+.timeline__item::before {
+  top: 0.55em;
 }
