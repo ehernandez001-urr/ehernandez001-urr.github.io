@@ -261,6 +261,17 @@ content:
           - { name: name_es, label: Nombre del curso (ES), type: string }
           - { name: description, label: Descripción (EN), type: text }
           - { name: description_es, label: Descripción (ES), type: text }
+      - name: years
+        label: Cursos por año
+        description: 'Opcional. Agrupa los cursos por año en un menú desplegable. Usa las siglas de la lista "Cursos".'
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{year}"
+        fields:
+          - { name: year, label: Año, type: number, required: true }
+          - { name: courses, label: Siglas, description: 'Ej.: MAT021', type: string, list: true }
       - name: body
         label: Texto de la ficha (avanzado)
         type: code

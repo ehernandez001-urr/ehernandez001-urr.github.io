@@ -5,30 +5,36 @@
   </h3>
   {% if post.department %}<p class="teaching-role__dept">{% include t.html en=post.department es=post.department_es %}</p>{% endif %}
 
-  {% if post.courses %}
+  {% if post.years %}
+    {% assign teaching_years = post.years | sort: "year" | reverse %}
+    <div class="teaching-years">
+      {% for entry in teaching_years %}
+        {% assign n_courses = entry.courses | size %}
+        <details class="teaching-year animated-details"{% if forloop.first %} open{% endif %}>
+          <summary>
+            <span class="details-chevron" aria-hidden="true"></span>
+            <span class="teaching-year__label">{{ entry.year }}</span>
+            <span class="teaching-year__count"><span class="i18n-en" lang="en">{{ n_courses }} {% if n_courses == 1 %}course{% else %}courses{% endif %}</span><span class="i18n-es" lang="es">{{ n_courses }} {% if n_courses == 1 %}curso{% else %}cursos{% endif %}</span></span>
+          </summary>
+          <div class="details-body">
+            <ul class="course-list">
+              {% for code in entry.courses %}
+                {% assign found = post.courses | where: "code", code | first %}
+                {% if found %}
+                  {% include teaching-course.html course=found %}
+                {% else %}
+                  <li class="course"><span class="course__code">{{ code }}</span></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+  {% elsif post.courses %}
     <ul class="course-list">
       {% for course in post.courses %}
-        {% capture course_label %}{% if course.code and course.code != "" %}<span class="course__code">{{ course.code }}</span>{% endif %}{% if course.name and course.name != "" %}<span class="course__name">{% include t.html en=course.name es=course.name_es %}</span>{% endif %}{% endcapture %}
-        {% assign has_desc = false %}
-        {% if course.description and course.description != "" %}{% assign has_desc = true %}{% endif %}
-        {% if course.description_es and course.description_es != "" %}{% assign has_desc = true %}{% endif %}
-        {% if has_desc %}
-          <li class="course course--expandable">
-            <details class="animated-details">
-              <summary><span class="details-chevron" aria-hidden="true"></span>{{ course_label }}</summary>
-              <div class="details-body">
-                <div class="course__description">
-                  {% assign desc_es = course.description_es | default: course.description %}
-                  {% assign desc_en = course.description | default: course.description_es %}
-                  <div class="i18n-en" lang="en">{{ desc_en | markdownify }}</div>
-                  <div class="i18n-es" lang="es">{{ desc_es | markdownify }}</div>
-                </div>
-              </div>
-            </details>
-          </li>
-        {% else %}
-          <li class="course">{{ course_label }}</li>
-        {% endif %}
+        {% include teaching-course.html course=course %}
       {% endfor %}
     </ul>
   {% else %}

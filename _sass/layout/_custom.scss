@@ -428,6 +428,45 @@ a {
   font-size: $type-size-6;
 }
 
+/* Courses grouped by year (teaching entries with a "years" list) */
+.teaching-years {
+  margin: 0.5em 0 0;
+}
+
+.teaching-year {
+  border-bottom: 1px solid var(--global-border-color);
+
+  &:first-child {
+    border-top: 1px solid var(--global-border-color);
+  }
+
+  > summary {
+    align-items: baseline;
+    padding: 0.6em 0.2em;
+
+    .details-chevron {
+      margin-top: 0;
+      align-self: center;
+    }
+  }
+
+  > .details-body > .course-list {
+    margin: 0 0 0.8em 0.4em;
+  }
+}
+
+.teaching-year__label {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--global-text-color);
+}
+
+.teaching-year__count {
+  margin-left: auto;
+  font-size: $type-size-6;
+  color: var(--global-text-color-light);
+}
+
 /* --------------------------------------------------------------------------
    Mobile
    -------------------------------------------------------------------------- */
