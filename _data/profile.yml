@@ -1,3 +1,1 @@
-# Foto de perfil del sitio. Se edita desde Pages CMS → "Foto de perfil".
-# Si se deja vacío, se usa author.avatar de _config.yml.
-avatar: /images/profile.png
+avatar: /images/img-20220524-wa0006.jpg
