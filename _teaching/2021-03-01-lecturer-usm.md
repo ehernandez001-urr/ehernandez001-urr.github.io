@@ -87,15 +87,10 @@ courses:
     name_es: "Matemáticas II"
     description: "Integral calculus of one variable with complementary topics in algebra. Topics: antiderivatives and integration techniques, simple differential equation models, the Riemann integral and the fundamental theorem of calculus, areas, polar coordinates, volumes of solids of revolution, and improper integrals."
     description_es: "Cálculo integral en una variable con temas complementarios de álgebra. Contenidos: antiderivadas y técnicas de integración, modelos simples con ecuaciones diferenciales, integral de Riemann y teorema fundamental del cálculo, áreas, coordenadas polares, volúmenes de sólidos de revolución e integrales impropias."
-  - code: "MATE25"
-    name: "Differential Calculus (workshop)"
-    name_es: "Cálculo Diferencial (taller)"
-    description: "Problem-solving workshop for the differential calculus course: limits, the definition of the derivative, differentiation rules and their applications."
-    description_es: "Taller de resolución de problemas del curso de cálculo diferencial: límites, definición de derivada, reglas de derivación y sus aplicaciones."
 # Cursos dictados cada año (siglas de la lista "courses" de arriba).
 years:
   - year: 2026
-    courses: [MAT00225, MAT021, MAT051, MAT052, MAT73425, MATE25]
+    courses: [MAT00225, MAT021, MAT051, MAT052, MAT73425]
   - year: 2025
     courses: [MAT021, MAT023, MAT024, MAT050, MAT060, MAT070, MAT071]
   - year: 2024
