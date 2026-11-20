@@ -1,0 +1,35 @@
+{%- comment -%}
+  Renders the CV sections stored in _data/cv.yml (editable in Pages CMS).
+  Usage: {% include cv-sections.html placement="top" %}  (or "bottom")
+{%- endcomment -%}
+{%- assign langs = "en,es" | split: "," -%}
+{%- for lang in langs -%}
+<div class="i18n-{{ lang }}" lang="{{ lang }}">
+{%- for s in site.data.cv.sections -%}
+{%- assign place = s.placement | default: "top" -%}
+{%- if place == include.placement -%}
+{%- if lang == "es" -%}{%- assign s_title = s.title_es | default: s.title -%}{%- else -%}{%- assign s_title = s.title -%}{%- endif %}
+<h1>{{ s_title }}</h1>
+<ul>
+{%- for it in s.items -%}
+{%- if lang == "es" -%}
+{%- assign i_when = it.when_es | default: it.when -%}{%- assign i_text = it.text_es | default: it.text -%}{%- assign i_details = it.details_es | default: it.details -%}
+{%- else -%}
+{%- assign i_when = it.when -%}{%- assign i_text = it.text -%}{%- assign i_details = it.details -%}
+{%- endif %}
+<li>{% if i_when and i_when != "" %}<strong>{{ i_when }}:</strong> {% endif %}{{ i_text | markdownify | remove: "<p>" | remove: "</p>" | strip }}
+{%- if i_details and i_details != "" -%}
+{%- assign lines = i_details | newline_to_br | split: "<br />" %}
+<ul>
+{%- for line in lines -%}{%- assign l = line | strip -%}{%- if l != "" %}
+<li>{{ l | markdownify | remove: "<p>" | remove: "</p>" | strip }}</li>
+{%- endif -%}{%- endfor %}
+</ul>
+{%- endif -%}
+</li>
+{%- endfor %}
+</ul>
+{%- endif -%}
+{%- endfor %}
+</div>
+{% endfor -%}

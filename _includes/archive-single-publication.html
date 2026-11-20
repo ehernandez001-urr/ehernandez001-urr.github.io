@@ -29,15 +29,17 @@
         <span class="details-chevron" aria-hidden="true"></span>
         <span class="pub-details__text">
           <span class="pub-details__title" itemprop="headline">{{ title }}</span>
-          <span class="pub-details__meta">{% if badge_en %}<span class="pub-badge pub-badge--{{ status }}">{% include t.html en=badge_en es=badge_es %}</span>{% endif %}<span><i>{{ post.venue }}</i> · {{ post.date | default: "1900-01-01" | date: "%Y" }}</span></span>
+          <span class="pub-details__meta">{% if badge_en %}<span class="pub-badge pub-badge--{{ status }}">{% include t.html en=badge_en es=badge_es %}</span>{% endif %}<span><i>{% include t.html en=post.venue es=post.venue_es %}</i> · {{ post.date | default: "1900-01-01" | date: "%Y" }}</span></span>
         </span>
       </summary>
       <div class="details-body">
         <div class="pub-details__body">
           {{ post.content }}
+          {% include summary-i18n.html en=post.summary es=post.summary_es %}
           {% include /components/citations.html
               citation=post.citation
               paperurl=post.paperurl
+              doiurl=post.doi
               slidesurl=post.slidesurl
               bibtexurl=post.bibtexurl
           %}

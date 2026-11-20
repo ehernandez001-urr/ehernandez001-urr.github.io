@@ -1,0 +1,11 @@
+{%- comment -%}
+  Bilingual summary from front matter fields (summary / summary_es), markdown allowed.
+  Usage: {% include summary-i18n.html en=post.summary es=post.summary_es %}
+  If "es" is empty, the English text is shown in both languages.
+{%- endcomment -%}
+{%- if include.en and include.en != "" -%}
+{%- assign sum_es = include.es | default: include.en -%}
+<div class="i18n-en" lang="en">{{ include.en | markdownify }}</div><div class="i18n-es" lang="es">{{ sum_es | markdownify }}</div>
+{%- elsif include.es and include.es != "" -%}
+<div>{{ include.es | markdownify }}</div>
+{%- endif -%}

@@ -26,9 +26,9 @@
           alt="">
       </div>
     {% endif %}
-    <h3 class="archive__item-title" itemprop="headline">{{ title }}</h3>
+    <h3 class="archive__item-title" itemprop="headline">{% include t.html en=title es=post.title_es %}</h3>
     {% if post.date %}<p class="page__meta"><i class="fa-solid fa-calendar" aria-hidden="true"></i> {% include date-i18n.html date=post.date %}</p>{% endif %}
-    {% if post.venue%}<p class="archive__item-excerpt" itemprop="description">{{ post.venue }}, {{ post.location }}</p>{% endif %}
+    {% if post.venue%}<p class="archive__item-excerpt" itemprop="description">{% include t.html en=post.venue es=post.venue_es %}, {% include t.html en=post.location es=post.location_es %}</p>{% endif %}
     </li>
   </article>
 </div>

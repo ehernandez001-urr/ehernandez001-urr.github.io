@@ -1,0 +1,72 @@
+# Contenido de la página CV (/cv/). Se edita desde Pages CMS → "CV".
+# placement: "top" = antes de Publicaciones/Charlas/Docencia; "bottom" = después.
+# Campos *_es vacíos usan el texto en inglés. "details" = una sub-viñeta por línea.
+pdf_en: /files/CV_Esteban_Hernandez_Urrutia_EN.pdf
+pdf_es: /files/CV_Esteban_Hernandez_Urrutia.pdf
+sections:
+  - title: Education
+    title_es: Formación
+    placement: top
+    items:
+      - text: "**Ph.D. in Mathematics & Doctorat en Automatique** (dual degree), Universidad Técnica Federico Santa María & Université Grenoble Alpes, 2017–2021"
+        text_es: "**Doctorado en Matemática y Doctorat en Automatique** (cotutela), Universidad Técnica Federico Santa María & Université Grenoble Alpes, 2017–2021"
+        details: |-
+          Advisors: Eduardo Cerpa and Christophe Prieur
+          Thesis: *Controlabilidad en la frontera, estabilización y problemas de seguimiento para sistemas parabólicos*
+        details_es: |-
+          Directores: Eduardo Cerpa y Christophe Prieur
+          Tesis: *Controlabilidad en la frontera, estabilización y problemas de seguimiento para sistemas parabólicos*
+      - text: "**M.Sc. in Mathematics**, Universidad Técnica Federico Santa María, 2014–2017"
+        text_es: "**Magíster en Ciencias Mención Matemática**, Universidad Técnica Federico Santa María, 2014–2017"
+        details: "Advisor: Eduardo Cerpa"
+        details_es: "Director: Eduardo Cerpa"
+      - text: "**Mathematical Engineering**, Universidad Técnica Federico Santa María, 2007–2015"
+        text_es: "**Ingeniería Civil Matemática**, Universidad Técnica Federico Santa María, 2007–2015"
+  - title: Research experience
+    title_es: Experiencia en investigación
+    placement: top
+    items:
+      - when: Aug 2021 – Dec 2022
+        when_es: Ago 2021 – Dic 2022
+        text: Research assistant, Millennium Nucleus for Applied Control and Inverse Problems, Chile. Control and modelling applied to neuroscience.
+        text_es: Asistente de investigación, Núcleo Milenio de Control Aplicado y Problemas Inversos, Chile. Control y modelamiento aplicados a neurociencia.
+      - when: Nov 2019 – Sep 2020
+        when_es: Nov 2019 – Sep 2020
+        text: Long research stay, Gipsa Lab, Université Grenoble Alpes, France (dual degree program).
+        text_es: Estadía larga de investigación, Gipsa Lab, Université Grenoble Alpes, Francia (programa de doble grado).
+      - when: Jul 2018 and Jul 2017
+        when_es: Jul 2018 y Jul 2017
+        text: "One-month research stays, Automatic Control Department, Gipsa Lab, Université Grenoble Alpes, France. Supervisor: Christophe Prieur."
+        text_es: "Estadías de investigación de un mes, Departamento de Automática, Gipsa Lab, Université Grenoble Alpes, Francia. Supervisor: Christophe Prieur."
+      - when: 2011 – 2013
+        when_es: 2011 – 2013
+        text: "Research internship on control of ordinary differential equations, Universidad Técnica Federico Santa María. Supervisor: Eduardo Cerpa."
+        text_es: "Práctica de investigación en control de ecuaciones diferenciales ordinarias, Universidad Técnica Federico Santa María. Supervisor: Eduardo Cerpa."
+  - title: Scholarships
+    title_es: Becas
+    placement: bottom
+    items:
+      - when: 2019 – 2020
+        when_es: 2019 – 2020
+        text: PIIC, Universidad Técnica Federico Santa María
+        text_es: PIIC, Universidad Técnica Federico Santa María
+      - when: 2017 – 2021
+        when_es: 2017 – 2021
+        text: Doctoral Scholarship in Mathematics, ANID (Chile)
+        text_es: Beca de Doctorado en Matemática, ANID (Chile)
+      - when: 2014 – 2015
+        when_es: 2014 – 2015
+        text: Master's Scholarship in Mathematics, ANID (Chile)
+        text_es: Beca de Magíster en Matemática, ANID (Chile)
+  - title: Service and outreach
+    title_es: Servicio y extensión
+    placement: bottom
+    items:
+      - when: 2024 – 2025
+        when_es: 2024 – 2025
+        text: Coordinator, USM Inclusion Program, Department of Mathematics
+        text_es: Coordinador, Programa de Inclusión USM, Departamento de Matemática
+      - when: Jan 2023
+        when_es: Ene 2023
+        text: Lecturer, [Summer School for high-school students](https://matematica.usm.cl/edmat-2023/), USM
+        text_es: Profesor, [Escuela de Verano para estudiantes de enseñanza media](https://matematica.usm.cl/edmat-2023/), USM

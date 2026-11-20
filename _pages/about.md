@@ -33,7 +33,7 @@ Mi investigación se centra en la controlabilidad y estabilización de EDPs de t
 
 Links
 ======
-* Curriculum Vitae (PDF): [English](/files/CV_Esteban_Hernandez_Urrutia_EN.pdf) · [Spanish](/files/CV_Esteban_Hernandez_Urrutia.pdf)
+* Curriculum Vitae (PDF): [English]({{ site.data.cv.pdf_en }}) · [Spanish]({{ site.data.cv.pdf_es }})
 * [Publications](/publications/)
 * [Google Scholar profile](https://scholar.google.com/citations?user=AilR4IcAAAAJ&hl=en)
 * [Mathematics Genealogy Project](https://www.mathgenealogy.org/id.php?id=278980)
@@ -43,7 +43,7 @@ Links
 
 Enlaces
 ======
-* Currículum Vitae (PDF): [español](/files/CV_Esteban_Hernandez_Urrutia.pdf) · [inglés](/files/CV_Esteban_Hernandez_Urrutia_EN.pdf)
+* Currículum Vitae (PDF): [español]({{ site.data.cv.pdf_es }}) · [inglés]({{ site.data.cv.pdf_en }})
 * [Publicaciones](/publications/)
 * [Perfil de Google Scholar](https://scholar.google.com/citations?user=AilR4IcAAAAJ&hl=es)
 * [Mathematics Genealogy Project](https://www.mathgenealogy.org/id.php?id=278980)

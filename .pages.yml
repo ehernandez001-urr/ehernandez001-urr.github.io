@@ -1,0 +1,323 @@
+# Pages CMS (https://app.pagescms.org) — formularios para editar el sitio.
+# Todo texto visible pide inglés (EN) y español (ES), igual que el resto del sitio.
+
+settings:
+  # Conserva las claves que no están en el formulario (permalink, etc.) al guardar.
+  content: true
+
+media:
+  - name: images
+    label: Imágenes
+    input: images
+    output: /images
+    categories: [image]
+    rename: safe
+  - name: files
+    label: PDFs y archivos
+    input: files
+    output: /files
+    categories: [document]
+    rename: safe
+
+content:
+  # ------------------------------------------------------------------ Foto
+  - name: profile
+    label: Foto de perfil
+    type: file
+    path: _data/profile.yml
+    format: yaml
+    fields:
+      - name: avatar
+        label: Foto de perfil
+        description: Imagen cuadrada (mín. 400×400 px). Sube una nueva o elige una existente.
+        type: image
+        required: true
+        options:
+          media: images
+
+  # ------------------------------------------------------------------ Publicaciones
+  - name: publications
+    label: Publicaciones
+    type: collection
+    path: _publications
+    format: yaml-frontmatter
+    exclude: [_PLANTILLA-preprint.md]
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    view:
+      fields: [title, category, status, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Título
+        description: En el idioma original del trabajo (no se traduce).
+        type: string
+        required: true
+      - name: category
+        label: Sección
+        type: select
+        required: true
+        options:
+          values:
+            - name: preprints
+              label: Preprints / enviados
+            - name: manuscripts
+              label: Artículos en revistas
+            - name: theses
+              label: Tesis
+      - name: status
+        label: Estado (etiqueta)
+        description: Opcional. Si se deja vacío, se deduce de la sección.
+        type: select
+        options:
+          values:
+            - name: submitted
+              label: En revisión / Under review
+            - name: accepted
+              label: Aceptado / Accepted
+            - name: published
+              label: Publicado / Published
+            - name: preprint
+              label: Preprint
+      - name: date
+        label: Fecha (envío o publicación)
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: venue
+        label: Revista o estado (EN)
+        description: 'Ej.: "Systems & Control Letters" o "Submitted to Automatica".'
+        type: string
+        required: true
+      - name: venue_es
+        label: Revista o estado (ES)
+        description: 'Ej.: "Systems & Control Letters" o "Enviado a Automatica".'
+        type: string
+        required: true
+      - name: citation
+        label: Cita completa
+        description: 'Ej.: P. Guzmán, E. Hernández. (2025). "Título." <i>Revista</i>, 196, 105973.'
+        type: text
+        required: true
+      - name: paperurl
+        label: PDF del artículo
+        description: Opcional. Sube el PDF (queda en /files/).
+        type: file
+        options:
+          media: files
+      - name: doi
+        label: Enlace DOI o arXiv
+        description: 'Opcional. Ej.: https://doi.org/10.1016/...'
+        type: string
+      - name: summary
+        label: Resumen breve (EN)
+        description: Opcional.
+        type: text
+      - name: summary_es
+        label: Resumen breve (ES)
+        description: Opcional. Si lo dejas vacío se muestra el texto en inglés.
+        type: text
+      - name: body
+        label: Contenido avanzado (no es necesario tocarlo)
+        description: Texto antiguo con bloques <div class="i18n-en/i18n-es">. Para entradas nuevas usa los campos de resumen.
+        type: code
+        options:
+          format: markdown
+
+  # ------------------------------------------------------------------ Charlas
+  - name: talks
+    label: Charlas
+    type: collection
+    path: _talks
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    view:
+      fields: [title, venue, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Título de la charla
+        description: En el idioma en que se dictó.
+        type: string
+        required: true
+      - name: title_es
+        label: Título traducido
+        description: Opcional. Si lo dejas vacío se usa el título original en ambos idiomas.
+        type: string
+      - name: type
+        label: Tipo
+        type: select
+        required: true
+        options:
+          values:
+            - name: Talk
+              label: Charla / Talk
+            - name: Seminar
+              label: Seminario / Seminar
+            - name: Poster
+              label: Póster / Poster
+            - name: Workshop
+              label: Taller / Workshop
+      - name: venue
+        label: Evento (EN)
+        type: string
+        required: true
+      - name: venue_es
+        label: Evento (ES)
+        type: string
+        required: true
+      - name: date
+        label: Fecha
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: location
+        label: Ciudad, país (EN)
+        description: 'Ej.: "Valparaíso, Chile". Se usa también para el mapa de charlas.'
+        type: string
+        required: true
+      - name: location_es
+        label: Ciudad, país (ES)
+        description: Opcional si es igual al inglés.
+        type: string
+      - name: slidesurl
+        label: Diapositivas (PDF)
+        description: Opcional.
+        type: file
+        options:
+          media: files
+      - name: summary
+        label: Resumen (EN)
+        description: Opcional.
+        type: text
+      - name: summary_es
+        label: Resumen (ES)
+        description: Opcional.
+        type: text
+      - name: body
+        label: Contenido avanzado (no es necesario tocarlo)
+        type: code
+        options:
+          format: markdown
+
+  # ------------------------------------------------------------------ Docencia
+  - name: teaching
+    label: Docencia
+    type: collection
+    path: _teaching
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    view:
+      fields: [title, institution, period]
+      primary: title
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Cargo (EN), type: string, required: true }
+      - { name: title_es, label: Cargo (ES), type: string, required: true }
+      - { name: institution, label: Institución, type: string }
+      - name: logo
+        label: Logo de la institución
+        type: image
+        options:
+          media: images
+      - { name: department, label: Departamento (EN), type: string }
+      - { name: department_es, label: Departamento (ES), type: string }
+      - { name: period, label: Período (EN), description: 'Ej.: "2021 – present"', type: string }
+      - { name: period_es, label: Período (ES), description: 'Ej.: "2021 – presente"', type: string }
+      - name: date
+        label: Fecha de inicio (para ordenar)
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - { name: location, label: Ciudad, país, type: string }
+      - name: courses
+        label: Cursos
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{code} {name_es}"
+        fields:
+          - { name: code, label: Sigla, description: 'Ej.: MAT021', type: string, required: true }
+          - { name: name, label: Nombre del curso (EN), type: string }
+          - { name: name_es, label: Nombre del curso (ES), type: string }
+          - { name: description, label: Descripción (EN), type: text }
+          - { name: description_es, label: Descripción (ES), type: text }
+      - name: body
+        label: Texto de la ficha (avanzado)
+        type: code
+        options:
+          format: markdown
+
+  # ------------------------------------------------------------------ CV
+  - name: cv
+    label: CV
+    type: file
+    path: _data/cv.yml
+    format: yaml
+    fields:
+      - name: pdf_en
+        label: CV completo en PDF (inglés)
+        type: file
+        required: true
+        options:
+          media: files
+      - name: pdf_es
+        label: CV completo en PDF (español)
+        type: file
+        required: true
+        options:
+          media: files
+      - name: sections
+        label: Secciones del CV
+        description: Formación, experiencia, becas, servicio… Publicaciones, charlas y docencia se generan solas desde sus menús.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title_es}"
+        fields:
+          - { name: title, label: Título de la sección (EN), type: string, required: true }
+          - { name: title_es, label: Título de la sección (ES), type: string, required: true }
+          - name: placement
+            label: Ubicación en la página
+            type: select
+            required: true
+            options:
+              values:
+                - name: top
+                  label: Antes de Publicaciones
+                - name: bottom
+                  label: Después de Docencia
+          - name: items
+            label: Entradas
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{when_es} {text_es}"
+            fields:
+              - { name: when, label: Período (EN), description: 'Opcional. Ej.: "Aug 2021 – Dec 2022"', type: string }
+              - { name: when_es, label: Período (ES), description: 'Ej.: "Ago 2021 – Dic 2022"', type: string }
+              - { name: text, label: Texto (EN), description: 'Admite **negrita**, *cursiva* y [enlaces](https://...).', type: text, required: true }
+              - { name: text_es, label: Texto (ES), type: text, required: true }
+              - { name: details, label: Sub-viñetas (EN), description: Opcional. Una por línea., type: text }
+              - { name: details_es, label: Sub-viñetas (ES), description: Opcional. Una por línea., type: text }
